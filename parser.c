@@ -78,12 +78,12 @@ void parse_file ( char * filename,
   
   while ( fgets(line, 255, f) != NULL ) {
     line[strlen(line)-1]='\0';
-    printf(":%s:\n",line);
+    //printf(":%s:\n",line);
     
     if ( !strcmp(line, "line") ) {//add line case
       fgets(line, 255, f);
       line[strlen(line)-1]='\0';
-      printf(":%s:\n",line);
+      //printf(":%s:\n",line);
 
       found = strtok(line," ");
 
@@ -96,7 +96,7 @@ void parse_file ( char * filename,
       //printf("\n");
       
       add_edge(edges, values[0], values[1], values[2], values[3], values[4], values[5]);
-      //print_martix(edges);
+      //print_matrix(edges);
     }
     
     else if ( !strcmp(line, "ident") ) {//identity case
@@ -107,7 +107,7 @@ void parse_file ( char * filename,
     else if ( !strcmp(line, "scale") ) {//scale case
       fgets(line, 255, f);
       line[strlen(line)-1]='\0';
-      printf(":%s:\n",line);
+      //printf(":%s:\n",line);
 
       found = strtok(line," ");
 
@@ -126,7 +126,7 @@ void parse_file ( char * filename,
     else if ( !strcmp(line, "move") ) {//move case
       fgets(line, 255, f);
       line[strlen(line)-1]='\0';
-      printf(":%s:\n",line);
+      //printf(":%s:\n",line);
       
       found = strtok(line," ");
 
@@ -145,7 +145,7 @@ void parse_file ( char * filename,
     else if ( !strcmp(line, "rotate") ) {//rotate case
       fgets(line, 255, f);
       line[strlen(line)-1]='\0';
-      printf(":%s:\n",line);
+      //printf(":%s:\n",line);
 
       axis = strtok(line," ");
       //printf("%s\t", axis);
@@ -186,11 +186,13 @@ void parse_file ( char * filename,
     else if ( !strcmp(line, "save") ) {//save case
       fgets(line, 255, f);
       //line[strlen(line)-1]='\0';
-      printf(":%s:\n",line);
+      //printf(":%s:\n",line);
 
       clear_screen(s);
       draw_lines(edges, s, c);
 
+      display(s);
+      
       save_ppm(s, line);
     }    
     
